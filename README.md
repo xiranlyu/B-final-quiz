@@ -59,6 +59,7 @@ GET /trainees?grouped=false
 | name:string        | 名字。             |
 | office:string        | 办公室。             |
 | email:string        | 邮箱地址。             |
+| github:string        | github 用户名。             |
 | zoomId:string        | 个人 Zoom Meeting ID。             |
 
 #### EXAMPLE
@@ -71,6 +72,7 @@ $ curl 'localhost:8080/trainees?grouped=false'
         "name": "Foo",
         "office": "西安",
         "email": "foo@thoughtworks.com",
+        "github": "foo",
         "zoomId": "foo"
     },
     {
@@ -78,6 +80,7 @@ $ curl 'localhost:8080/trainees?grouped=false'
         "name": "Bar",
         "office": "北京",
         "email": "bar@thoughtworks.com",
+        "github": "bar",
         "zoomId": "bar"
     }
 ]
@@ -96,6 +99,7 @@ POST /trainees
 | name:string   | 非空 | 名字。             |
 | office:string | 非空 | 办公室。             |
 | email:string  | 非空且为合法邮箱地址 | 邮箱地址。|
+| github:string | 非空 | github 用户名。        |
 | zoomId:string | 非空 | 个人 Zoom Meeting ID。 |
 
 #### RESPONSE
@@ -118,6 +122,7 @@ POST /trainees
 | name:string   | 名字。             |
 | office:string | 办公室。             |
 | email:string  | 邮箱地址。          |
+| github:string | github 用户名。   |
 | zoomId:string | 个人 Zoom Meeting ID。 |
 
 #### EXAMPLE
@@ -129,6 +134,7 @@ $ curl -v -H "Content-Type: application/json" --data @trainee.json localhost:808
     "name": "Foo",
     "office": "西安",
     "email": "foo@thoughtworks.com",
+    "github": "foo",
     "zoomId": "foo"
 }
 ```
@@ -320,6 +326,7 @@ $ curl localhost:8080/groups
                 "name": "Foo",
                 "office": "西安",
                 "email": "foo@thoughtworks.com",
+                "github": "foo",
                 "zoomId": "foo"
             }
         ]
@@ -343,6 +350,7 @@ $ curl localhost:8080/groups
                 "name": "Bar",
                 "office": "北京",
                 "email": "bar@thoughtworks.com",
+                "github": "bar",
                 "zoomId": "bar"
             }
         ]
@@ -401,6 +409,7 @@ $ curl -X POST localhost:8080/groups/auto-grouping
                 "name": "Foo",
                 "office": "西安",
                 "email": "foo@thoughtworks.com",
+                "github": "foo",
                 "zoomId": "foo"
             }
         ]
@@ -424,6 +433,7 @@ $ curl -X POST localhost:8080/groups/auto-grouping
                 "name": "Bar",
                 "office": "北京",
                 "email": "bar@thoughtworks.com",
+                "github": "bar",
                 "zoomId": "bar"
             }
         ]
