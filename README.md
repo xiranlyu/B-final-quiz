@@ -400,40 +400,6 @@ $ curl -X POST localhost:8080/groups/auto-grouping
 ]
 ```
 
-### 重命名分组
-
-#### ENDPOINT
-
-PATCH /groups/{group_id}
-
-#### REQUEST
-
-| 字段:类型      | 校验要求     | 说明                |
-| ------------- | ----------- | ------------------ |
-| name:string   | 非空，且不重复 | 新的分组名称。        |
-
-#### RESPONSE
-
-##### Status
-
-成功时返回 200 Ok。
-
-`{group_id}` 不存在时返回 404 Not Found。
-
-新名称与已有分组名称重复时返回 400 Bad Request。
-
-其它情况请根据 REST API Design 自行选择合理的实现。
-
-##### Body
-
-无返回数据。
-
-#### EXAMPLE
-
-```shell
-$ curl -X PATCH --data '{"name": "new name"}' -H "Content-Type: application/json" localhost:8080/groups/{group_id}
-```
-
 ## 返回结果说明
 
 使用标准 HTTP Status Code 来标识返回结果成功或失败与否。
