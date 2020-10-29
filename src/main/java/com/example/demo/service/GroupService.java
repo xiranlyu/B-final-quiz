@@ -53,9 +53,9 @@ public class GroupService {
 
         for (int i = 0; i < traineeList.size(); i++) {
             traineeList.get(i).setGrouped(true);
-            List<Trainee> traineeList1 = groupList.get(i % groupList.size()).getTraineesList();
-            traineeList1.add(traineeList.get(i));
-            groupList.get(i % groupList.size()).setTraineesList(traineeList1);
+            List<Trainee> GroupedTraineeList = groupList.get(i % groupList.size()).getTraineesList();
+            GroupedTraineeList.add(traineeList.get(i));
+            groupList.get(i % groupList.size()).setTraineesList(GroupedTraineeList);
         }
 
         if (trainerList.size() % 2 == 1) {
@@ -64,9 +64,9 @@ public class GroupService {
 
         for (int i = 0; i < trainerList.size(); i++) {
             trainerList.get(i).setGrouped(true);
-            List<Trainer> trainerList1 = groupList.get(i % groupList.size()).getTrainersList();
-            trainerList1.add(trainerList.get(i));
-            groupList.get(i % groupList.size()).setTrainersList(trainerList1);
+            List<Trainer> GroupedTraineeList = groupList.get(i % groupList.size()).getTrainersList();
+            GroupedTraineeList.add(trainerList.get(i));
+            groupList.get(i % groupList.size()).setTrainersList(GroupedTraineeList);
         }
 
         groupRepo.saveAll(groupList);
