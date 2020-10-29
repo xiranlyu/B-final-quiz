@@ -31,7 +31,6 @@
 * 删除讲师
 * 查询所有分组
 * 自动随机分组讲师和学员
-* 重命名分组
 
 ### 查询所有未分组学员
 
@@ -57,10 +56,6 @@ GET /trainees?grouped=false
 | ------------------ | ------------------ |
 | id:long            | ID。               |
 | name:string        | 名字。             |
-| office:string        | 办公室。             |
-| email:string        | 邮箱地址。             |
-| github:string        | github 用户名。             |
-| zoomId:string        | 个人 Zoom Meeting ID。             |
 
 #### EXAMPLE
 
@@ -69,19 +64,11 @@ $ curl 'localhost:8080/trainees?grouped=false'
 [
     {
         "id": 1,
-        "name": "Foo",
-        "office": "西安",
-        "email": "foo@thoughtworks.com",
-        "github": "foo",
-        "zoomId": "foo"
+        "name": "Foo"
     },
     {
         "id": 2,
-        "name": "Bar",
-        "office": "北京",
-        "email": "bar@thoughtworks.com",
-        "github": "bar",
-        "zoomId": "bar"
+        "name": "Bar"
     }
 ]
 ```
@@ -97,10 +84,6 @@ POST /trainees
 | 字段:类型      | 校验要求 | 说明               |
 | --------------|---- | ------------------ |
 | name:string   | 非空 | 名字。             |
-| office:string | 非空 | 办公室。             |
-| email:string  | 非空且为合法邮箱地址 | 邮箱地址。|
-| github:string | 非空 | github 用户名。        |
-| zoomId:string | 非空 | 个人 Zoom Meeting ID。 |
 
 #### RESPONSE
 
@@ -120,10 +103,6 @@ POST /trainees
 | --------------|------------------ |
 | id:long       | ID。               |
 | name:string   | 名字。             |
-| office:string | 办公室。             |
-| email:string  | 邮箱地址。          |
-| github:string | github 用户名。   |
-| zoomId:string | 个人 Zoom Meeting ID。 |
 
 #### EXAMPLE
 
@@ -131,11 +110,7 @@ POST /trainees
 $ curl -v -H "Content-Type: application/json" --data @trainee.json localhost:8080/trainees
 {
     "id": 11,
-    "name": "Foo",
-    "office": "西安",
-    "email": "foo@thoughtworks.com",
-    "github": "foo",
-    "zoomId": "foo"
+    "name": "Foo"
 }
 ```
 
@@ -323,11 +298,7 @@ $ curl localhost:8080/groups
         "trainees": [
             {
                 "id": 1,
-                "name": "Foo",
-                "office": "西安",
-                "email": "foo@thoughtworks.com",
-                "github": "foo",
-                "zoomId": "foo"
+                "name": "Foo"
             }
         ]
     },
@@ -347,11 +318,7 @@ $ curl localhost:8080/groups
         "trainees": [
             {
                 "id": 2,
-                "name": "Bar",
-                "office": "北京",
-                "email": "bar@thoughtworks.com",
-                "github": "bar",
-                "zoomId": "bar"
+                "name": "Bar"
             }
         ]
     }
@@ -406,11 +373,7 @@ $ curl -X POST localhost:8080/groups/auto-grouping
         "trainees": [
             {
                 "id": 1,
-                "name": "Foo",
-                "office": "西安",
-                "email": "foo@thoughtworks.com",
-                "github": "foo",
-                "zoomId": "foo"
+                "name": "Foo"
             }
         ]
     },
@@ -430,11 +393,7 @@ $ curl -X POST localhost:8080/groups/auto-grouping
         "trainees": [
             {
                 "id": 2,
-                "name": "Bar",
-                "office": "北京",
-                "email": "bar@thoughtworks.com",
-                "github": "bar",
-                "zoomId": "bar"
+                "name": "Bar"
             }
         ]
     }
@@ -495,7 +454,6 @@ $ curl -X PATCH --data '{"name": "new name"}' -H "Content-Type: application/json
 | 字段:类型        | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
 | message:string   | 错误提示信息，内容可以自行编写，表意即可。如：Cannot find basic info of person with id is 666. |
-| details:map      | 字段校验失败时，需要将出错的字段及其错误信息通过该字段提供。其它情况下该字段不必返回。|
 
 一个示例如下：
 
@@ -522,5 +480,5 @@ curl -v --data '{"name": "Foo"}' -H "Content-Type: application/json" localhost:8
 < Connection: close
 <
 * Closing connection 0
-{"message":"Invalid values.","details":{"zoomId":"Zoom ID is mandatory","office":"Office is mandatory","email":"Email is mandatory"}}
+{"message":"Invalid values."}
 ```
