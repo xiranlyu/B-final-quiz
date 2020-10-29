@@ -22,4 +22,9 @@ public class GroupController {
     public List<Group> getAllGroups() {
         return groupService.getAllGroups();
     }
+
+    @PostMapping("/auto-grouping")
+    public List<Group> autoGrouping() {
+        return groupService.autoGrouping();
+    }
 }

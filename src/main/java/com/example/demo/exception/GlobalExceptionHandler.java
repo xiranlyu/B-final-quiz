@@ -16,6 +16,12 @@ import java.util.Objects;
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResult);
         }
 
+        @ExceptionHandler(GroupingException.class)
+        public ResponseEntity<ErrorResult> handle(GroupingException ex) {
+        ErrorResult errorResult = new ErrorResult(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
+        }
+
         @ExceptionHandler(MethodArgumentNotValidException.class)
         public ResponseEntity<ErrorResult> handle(MethodArgumentNotValidException ex) {
             String message = Objects.requireNonNull(ex.getBindingResult().getFieldError()).getDefaultMessage();
