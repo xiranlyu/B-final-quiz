@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Trainee;
 import com.example.demo.model.Trainer;
-import com.example.demo.repo.TraineeRepo;
 import com.example.demo.repo.TrainerRepo;
 import org.springframework.stereotype.Service;
 
