@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.exception.IdNotFoundException;
 import com.example.demo.model.Trainer;
 import com.example.demo.repo.TrainerRepo;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,10 @@ public class TrainerService {
     }
 
     public void deleteTrainer(Long id) {
-        trainerRepo.deleteById(id);
+        if (!trainerRepo.existsById(id)) {
+            throw new IdNotFoundException("ID cannot be found!");
+        } else {
+            trainerRepo.deleteById(id);
+        }
     }
 }
