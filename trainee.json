@@ -1,6 +1,3 @@
 {
-    "name": "Foo",
-    "office": "西安",
-    "email": "foo@thoughtworks.com",
-    "zoomId": "foo"
+    "name": "Foo"
 }
