@@ -22,6 +22,7 @@ public class TraineeService {
         return traineeRepo.save(trainee);
     }
 
+    // TODO GTB-完成度: - 没有考虑id不存在的情况
     public void deleteTrainee(Long id) {
         traineeRepo.deleteById(id);
     }

@@ -30,6 +30,7 @@ public class TraineeController {
         return traineeService.addTrainee(trainee);
     }
 
+    // TODO GTB-工程实践: - 变量名应使用驼峰命名，首字母小写
     @DeleteMapping("/{trainee_id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTrainee(@PathVariable Long trainee_id) {
